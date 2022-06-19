@@ -1,0 +1,80 @@
+.ui-button {
+    border: 3px solid #141414;
+    background-color: #9BA0AB;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.ui-button-size-L {
+    padding: 0 30px;
+    height: 88px;
+    font-size: 22px;
+}
+
+.ui-button-size-M {
+    padding: 0 12px;
+    height: 64px;
+    font-size: 18px;
+}
+
+.ui-button-size-S {
+    padding: 0 12px;
+    height: 48px;
+    font-size: 16px;
+}
+
+
+.ui-button:before,
+.ui-button:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 12px;
+}
+
+.ui-button:before {
+    top: 0;
+    background-color: #BDC2D2;
+}
+.ui-button:after {
+    bottom: 0;
+    background-color: #676B7B;
+}
+
+.ui-button:not([disabled]):hover {
+    background-color: #959BA8;
+}
+
+
+.ui-button-size-M:before,
+.ui-button-size-M:after {
+    height: 8px;
+}
+
+.ui-button-size-S:before,
+.ui-button-size-S:after {
+    height: 6px;
+}
+
+.ui-button-danger {
+    background-color: #D5A7A7;
+}
+
+.ui-button-danger:before {
+    background-color: #D2BDBD;
+}
+.ui-button-danger:after {
+    background-color: #A17A7A;
+}
+.ui-button-danger:not([disabled]):hover {
+    background-color: #C89797;
+}
+
+.ui-button[disabled] {
+    cursor: not-allowed;
+}

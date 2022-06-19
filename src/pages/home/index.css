@@ -1,0 +1,65 @@
+.home_container {
+  width: 100vw;
+  height: 100vh;
+  background: url(./bghome.jpg) no-repeat center bottom fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding-top: 50px;
+}
+
+.loading {
+  font-size: 30px;
+  text-align: center;
+}
+
+.home {
+  width: 90%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 100px 0 0;
+  color: #BDC2D2;
+}
+
+.home .home-desc {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+
+.home  .home-amount {
+  font-size: 70px;
+  text-align: center;
+  font-weight: 500;
+  line-height: 100px;
+  margin-bottom: 10px;
+}
+
+.home .home-fly {
+  padding: 5px;
+  margin: -5px;
+  display: block;
+}
+
+.home-button {
+  display: block;
+  width: 100%;
+}
+
+
+.tips {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 10px;
+  text-shadow: 1px 2px 5px rgba(255,255,255,.3);
+  font-weight: 500;
+}
+
+.tips-success {
+  color: #fff;
+}
+
+.tips-fail {
+  color: #FF603E;
+}

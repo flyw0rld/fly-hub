@@ -1,0 +1,209 @@
+.nest_container {
+  width: 100vw;
+  height: 100vh;
+  background: url(./bgnest.jpg) no-repeat center bottom fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  padding-top: 80px;
+}
+
+
+.nest {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 100px 0 0;
+  color: #BDC2D2;
+  overflow: auto;
+  height: calc(100vh - 100px);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.room {
+  border: 3px solid rgba(20, 20, 20, .74);
+  border-radius: 10px;
+  width: 280px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.room:nth-child(3n) {
+  margin-right: 0;
+}
+
+.room-inner {
+  border: 5px solid rgba(202, 212, 229, .74);
+  background-color: rgba(166, 144, 95, .74);
+  padding: 8px 10px;
+  border-radius: 10px;
+  height: 280px;
+  color: #fff;
+}
+
+.nest-add {
+  background-image: url(../../assets/add.png);
+  background-size: 144px 144px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.nest-add:hover {
+  opacity: .8;
+}
+
+.room-id {
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.room-row {
+  display: flex;
+  align-items: center;
+  background-color: rgba(85, 60, 27, 0.9);
+  border-radius: 10px;
+  height: 65px;
+  padding: 0 10px;
+  margin-top: 8px;
+}
+
+.room-timer {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.room-content {
+  margin-left: 10px;
+}
+
+.room-actions {
+  display: flex;
+  align-items: center;
+}
+
+.room-actions  button {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.room-actions  button:last-child {
+  margin-right: 0;
+}
+
+.room-actions .room-emergency {
+  font-size: 14px;
+  flex: 0 0 120px;
+  line-height: 14px;
+}
+
+
+.ui-modal {
+
+}
+
+.ui-modal-backdrop {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(0,0,0,.67);
+  animation: fadeIn ease .4s both;
+}
+
+.ui-modal-content {
+  position: fixed;
+  left: 50%;
+  top: 30%;
+  width: 90%;
+  max-width: 900px;
+  border: 3px solid rgba(20, 20, 20, .74);
+  border-radius: 10px;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.ui-modal-inner {
+  border: 5px solid rgba(202, 212, 229, .74);
+  background-color: rgba(166, 144, 95, .74);
+  padding: 50px 40px;
+  border-radius: 10px;
+}
+
+ui-modal .loading {
+  margin-bottom: 30px;
+}
+
+.ui-modal-action {
+  text-align: center;
+}
+
+.ui-modal-action button {
+  width: 166px;
+  margin-right: 15px;
+}
+
+.ui-modal-action button:last-child {
+  margin-right: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.ui-modal-close {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  background: url(./close.png) center center no-repeat;
+  background-size: cover;
+  right: 16px;
+  top: 16px;
+  cursor: pointer;
+}
+
+.token-list {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.token-item {
+  margin-right: 15px;
+  margin-bottom: 15px;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+}
+
+.token-item-main {
+  box-sizing: content-box;
+  background-color: #6E542D;
+  border: 5px solid transparent;
+  border-radius: 12px;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.token-item.active .token-item-main {
+  border-color: #4DBB63;
+}
+.token-item.disabled .token-item-main {
+  opacity: .8;
+  cursor: not-allowed;
+}
+
+.token-item .ui-nft img {
+  width: 90px;
+  height: 90px;
+}

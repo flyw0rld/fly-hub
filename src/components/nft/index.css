@@ -1,0 +1,18 @@
+.ui-nft {
+    display: inline-block;
+    position: relative;
+}
+
+.ui-nft-id {
+    position: absolute;
+    color: #fff;
+    left: 10px;
+    top: 10px;
+}
+
+.ui-nft img {
+    width: 50px;
+    height: 50px;
+    display: block;
+    border-radius: 4px;
+}
