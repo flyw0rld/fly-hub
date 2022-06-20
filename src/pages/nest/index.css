@@ -10,9 +10,15 @@
 
 
 .nest {
-  padding: 100px 0 0;
   overflow: auto;
   height: calc(100vh - 100px);
+}
+
+.nest-desc {
+  width: 90%;
+  max-width: 660px;
+  margin: 30px auto 40px;
+  font-size: 20px;
 }
 
 .room-list {
@@ -221,5 +227,10 @@ ui-modal .loading {
   .room {
     margin-right: 0;
     width: 100%;
+  }
+  .nest-desc {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 14px;
   }
 }

@@ -41,6 +41,7 @@ function Nest() {
   return (
     <div className="nest_container">
       <div className="nest">
+        <div className="nest-desc">This is the spawning space of the fly world. Click on the plus sign to add your flies (must be a multiple of 2), every two of them will produce one egg after 48 hours and the baby flies will appear soon. If you exit in the middle of an emergency, you won't get any reward, only the original pledged nft back</div>
         {loading && <div className="loading">loading...</div>}
         <div className="room-list">
           {roomIds.map((id) => {

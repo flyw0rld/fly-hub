@@ -86,19 +86,28 @@ function Home() {
               genesisSupply && <div className="home-amount">{totalSupply} / {genesisSupply}</div>
             }
             <Fly shake={!minted} className="home-fly">
-              {(status == 0 || status == 4) && <Button className="home-button" size="L" disabled={!!minted}>
-                NOT STARTED
-              </Button>}
-              {status == 1 && isAllowlist && <Button className="home-button" size="L" onClick={handleAllowlistMint} disabled={!!minted}>{
-                claimStatus === 'loading' ? 'minting...' : minted ? 'MINTED' : 'WHITELIST MINT'
-              }</Button>}
-              {status == 1 && !isAllowlist && <Button className="home-button" size="L" disabled={true}>
-                NOT WHITELISTED
-              </Button>}
               {
-                status == 2 && <Button className="home-button" size="L" onClick={handleClick} disabled={!!minted}>{
-                  claimStatus === 'loading' ? 'minting...' : minted ? 'MINTED' : 'MINT'
-                }</Button>
+                !account && <Button className="home-button" size="L" onClick={connect}>
+                  CONNECT
+                </Button>
+              }
+              {
+                account && <>
+                  {(status == 0 || status == 4) && <Button className="home-button" size="L" disabled={!!minted}>
+                    NOT STARTED
+                  </Button>}
+                  {status == 1 && isAllowlist && <Button className="home-button" size="L" onClick={handleAllowlistMint} disabled={!!minted}>{
+                    claimStatus === 'loading' ? 'minting...' : minted ? 'MINTED' : 'WHITELIST MINT'
+                  }</Button>}
+                  {status == 1 && !isAllowlist && <Button className="home-button" size="L" disabled={true}>
+                    NOT WHITELISTED
+                  </Button>}
+                  {
+                    status == 2 && <Button className="home-button" size="L" onClick={handleClick} disabled={!!minted}>{
+                      claimStatus === 'loading' ? 'minting...' : minted ? 'MINTED' : 'PUBLIC MINT'
+                    }</Button>
+                  }
+                </>
               }
             </Fly>
           </>
