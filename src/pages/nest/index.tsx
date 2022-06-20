@@ -41,14 +41,17 @@ function Nest() {
   return (
     <div className="nest_container">
       <div className="nest">
-        {roomIds.map((id) => {
-          return <Room id={id} key={id} onChange={() => {
+        {loading && <div className="loading">loading...</div>}
+        <div className="room-list">
+          {roomIds.map((id) => {
+            return <Room id={id} key={id} onChange={() => {
               load(account)
             }}
-          />
-        })}
-        <div className="room">
-          <div className="room-inner nest-add" onClick={handleAdd}>
+            />
+          })}
+          <div className="room">
+            <div className="room-inner nest-add" onClick={handleAdd}>
+            </div>
           </div>
         </div>
       </div>

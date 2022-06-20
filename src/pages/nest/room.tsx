@@ -5,6 +5,7 @@ import NFT from "../../components/nft";
 import Timer from "../../components/timer";
 import Button from "../../components/button";
 import {config} from "../../config";
+import {BigNumber} from "ethers";
 
 interface Props {
   id: number
@@ -15,10 +16,10 @@ function Room(props: Props) {
   const {id, onChange} = props;
   const { account, chainId, nest, connect} = useContext(Web3Context)
   const [loading , setLoading] = useState<boolean>()
-  const [data , setData] = useState<any>(null)
+  const [data , setData] = useState<any>()
   const [period , setPeriod] = useState<number>()
-  const [canHatch , setCanHatch] = useState<boolean>(null)
-  const [withdrawing , setWithdrawing] = useState<boolean>(null)
+  const [canHatch , setCanHatch] = useState<boolean>()
+  const [withdrawing , setWithdrawing] = useState<boolean>()
 
   const load = async () => {
     const info = await nest.getRoomInfo(id)
@@ -29,7 +30,7 @@ function Room(props: Props) {
       enterTime: info.enterTime.toNumber(),
       withdraw: info.withdraw,
       owner: info.owner,
-      parentIds: info.parentIds.map(id => id.toNumber())
+      parentIds: info.parentIds.map((id: BigNumber) => id.toNumber())
     })
   }
 
@@ -79,13 +80,13 @@ function Room(props: Props) {
       <div className="room-inner">
         <div className="room-id">ROOM #{id}</div>
         {loading && <div className="loading">loading...</div>}
-        {(data?.parentIds || []).map((tokenId) => {
+        {(data?.parentIds || []).map((tokenId: number) => {
           return <div className="room-row" key={tokenId}>
             <NFT tokenId={tokenId}/>
             <div className="room-content">DeadFly #{tokenId}</div>
           </div>
         })}
-        {data && !data.withdraw && <div className="room-timer"><Timer startTime={data.enterTime * 1000} time={period*1000} onFinish={load} /> to hatch</div>}
+        {data && !data.withdraw && <div className="room-timer"><Timer startTime={data.enterTime * 1000} time={(period || 144000)*1000} onFinish={load} /> to hatch</div>}
         {data && data.withdraw && <div className="tips">ALREADY WITHDRAWED</div>}
         {
           data && !data.withdraw && <div className="room-actions">

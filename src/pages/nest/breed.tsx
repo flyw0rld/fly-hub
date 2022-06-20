@@ -6,6 +6,7 @@ import Fly from "../../components/audio";
 import classNames from "classnames";
 import NFT from "../../components/nft";
 import {config} from "../../config";
+import {BigNumber} from "ethers";
 
 
 interface Props {
@@ -19,14 +20,14 @@ function Breed(props: Props) {
   const { account, chainId, nft, nest, connect} = useContext(Web3Context)
   const [loading , setLoading] = useState<boolean>()
   const [approving , setApproving] = useState<boolean>()
-  const [isApprove , setIsApprove] = useState<boolean>(null)
+  const [isApprove , setIsApprove] = useState<boolean>()
   const [tokens , setTokens] = useState<number[]>([])
   const [selected , setSelected] = useState<number[]>([])
 
   const load = async (account: string) => {
     setLoading(true)
     const approve = await nft.isApprovedForAll(account, config.NEST)
-    const ids = (await nft.tokensOfOwner(account)).map(id => id.toNumber())
+    const ids = (await nft.tokensOfOwner(account)).map((id: BigNumber) => id.toNumber())
     setIsApprove(approve)
     setSelected(ids.slice(0, 2))
     setTokens(ids)
@@ -81,57 +82,62 @@ function Breed(props: Props) {
 
   const disabled = selected.length < 2
 
-  return visible && (
-    <div className="ui-modal">
-      <div className="ui-modal-backdrop" />
-      <div className="ui-modal-content">
-        <div className="ui-modal-inner">
-          {loading && <div className="loading">loading...</div>}
-          {!loading && tokens.length === 0 && <div className="tips">You don't have enough DeadFly, welcome to buy it at opensea.</div>}
-          <div className='token-list'>
-            {tokens.map((tokenId) => {
-              const hasSelected = selected.includes(tokenId)
-              return <div key={tokenId} className={classNames('token-item', {
-                  'active': hasSelected,
-                  'disable': selected.length >=2 && !hasSelected,
-                })}>
-                <div className="token-item-main" onClick={() => handleSelect(tokenId)}>
-                  <NFT tokenId={tokenId} />
-                </div>
-                <span>#{tokenId}</span>
+  return <div>
+    {
+      visible && (
+        <div className="ui-modal">
+          <div className="ui-modal-backdrop"/>
+          <div className="ui-modal-content">
+            <div className="ui-modal-inner">
+              {loading && <div className="loading">loading...</div>}
+              {!loading && tokens.length === 0 &&
+                <div className="tips">You don't have enough DeadFly, welcome to buy it at opensea.</div>}
+              <div className='token-list'>
+                {tokens.map((tokenId) => {
+                  const hasSelected = selected.includes(tokenId)
+                  return <div key={tokenId} className={classNames('token-item', {
+                    'active': hasSelected,
+                    'disable': selected.length >= 2 && !hasSelected,
+                  })}>
+                    <div className="token-item-main" onClick={() => handleSelect(tokenId)}>
+                      <NFT tokenId={tokenId}/>
+                    </div>
+                    <span>#{tokenId}</span>
+                  </div>
+                })}
               </div>
-            })}
-          </div>
-          {
-            loading === false && <div className="ui-modal-action">
               {
-                tokens.length <2 && <Button size="M" onClick={() => {
-                  location.href = config.opensea
-                }}>
-                  GO
-                </Button>
-              }
-              {
-                tokens.length >0 && !isApprove && <Fly>
-                  <Button size="M" onClick={handleApprove}>
-                    {approving ? 'APPROVING...': 'APPROVE'}
-                  </Button>
-                </Fly>
-              }
-              {
-                tokens.length >0 && isApprove && <Fly shake={!disabled}>
-                <Button size="M" disabled={disabled} onClick={handleBreed}>
-                  {disabled ? 'Need 2 Flies' : approving ? 'BREEDING...': 'BREED'}
-                </Button>
-              </Fly>
+                loading === false && <div className="ui-modal-action">
+                  {
+                    tokens.length < 2 && <Button size="M" onClick={() => {
+                      location.href = config.opensea
+                    }}>
+                      GO
+                    </Button>
+                  }
+                  {
+                    tokens.length > 0 && !isApprove && <Fly>
+                      <Button size="M" onClick={handleApprove}>
+                        {approving ? 'APPROVING...' : 'APPROVE'}
+                      </Button>
+                    </Fly>
+                  }
+                  {
+                    tokens.length > 0 && isApprove && <Fly shake={!disabled}>
+                      <Button size="M" disabled={disabled} onClick={handleBreed}>
+                        {disabled ? 'Need 2 Flies' : approving ? 'BREEDING...' : 'BREED'}
+                      </Button>
+                    </Fly>
+                  }
+                </div>
               }
             </div>
-          }
+            <div className="ui-modal-close" onClick={onClose}/>
+          </div>
         </div>
-        <div className="ui-modal-close" onClick={onClose} />
-      </div>
-    </div>
-  )
+      )
+    }
+  </div>
 }
 
 export default Breed

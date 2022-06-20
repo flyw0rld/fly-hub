@@ -10,13 +10,16 @@
 
 
 .nest {
+  padding: 100px 0 0;
+  overflow: auto;
+  height: calc(100vh - 100px);
+}
+
+.room-list {
   width: 90%;
   max-width: 900px;
   margin: 0 auto;
-  padding: 100px 0 0;
   color: #BDC2D2;
-  overflow: auto;
-  height: calc(100vh - 100px);
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;

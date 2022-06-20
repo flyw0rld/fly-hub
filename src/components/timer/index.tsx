@@ -9,17 +9,19 @@ interface TagProps {
 
 const Timer = (props: PropsWithChildren<TagProps>) => {
   const { time, startTime, onFinish, ...rest } = props
-  const [progress, setProgress] = useState<number>(null)
+  const [progress, setProgress] = useState<number>(0)
 
   useEffect(() => {
     const set = () => {
       if (startTime) {
         const diff = Math.max(
-          new Date(startTime).getTime() + time - Date.now(),
+          new Date(startTime).getTime() + (time || 0) - Date.now(),
           0,
         )
         setProgress(diff / 1000)
         return diff
+      } else {
+        return 0
       }
     }
     set()
