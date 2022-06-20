@@ -15,7 +15,7 @@ const Timer = (props: PropsWithChildren<TagProps>) => {
     const set = () => {
       if (startTime) {
         const diff = Math.max(
-          new Date(startTime).getTime() + (time || 0) - Date.now(),
+          new Date(startTime).getTime() + (time || 0) + (20 * 1000) - Date.now(),
           0,
         )
         setProgress(diff / 1000)

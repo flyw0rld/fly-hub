@@ -29,12 +29,7 @@
   border: 3px solid rgba(20, 20, 20, .74);
   border-radius: 10px;
   width: 280px;
-  margin-right: 20px;
-  margin-bottom: 20px;
-}
-
-.room:nth-child(3n) {
-  margin-right: 0;
+  margin: 10px;
 }
 
 .room-inner {
