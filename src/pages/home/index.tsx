@@ -26,7 +26,6 @@ function Home() {
       setGenesisSupply(genesis)
       if(account){
         const toNumber = (await nft.numberMinted(address)).toNumber();
-        console.log({toNumber})
         setMinted(toNumber >= 1)
         console.log(stage);
       }

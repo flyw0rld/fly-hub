@@ -33,6 +33,7 @@ header {
   background-size: contain;
   width: 100px;
   height: 100px;
+  filter: drop-shadow(5px 5px 5px rgba(255,255,255,.6));
 }
 
 .header-actions {
@@ -46,13 +47,33 @@ header {
     text-align: center;
     line-height: 55px;
     font-weight: 500;
+    text-shadow: 0 2px 5px rgba(255,255,255,.6);
 }
 
 .nav-item.active {
     background: url("./assets/nav.png") center no-repeat;
     background-size: 122px;
+    text-shadow: none;
 }
 
 .connect-button {
     margin-left: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    header {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .nav-item {
+        width: 80px;
+        height: 44px;
+        line-height: 44px;
+    }
+
+    .logo {
+        width: 60px;
+        height: 60px;
+    }
 }

@@ -9,15 +9,47 @@ type Props = PropsWithChildren<{
  className?: string
   shake?: boolean
 }>
+let audio
+
+try {
+  audio = new Audio(mp3)
+  audio.loop = true;
+}catch (e) {
+  console.log('not support audio')
+}
+
+function detectMobile() {
+  const toMatch = [
+    /Android/i,
+    /webOS/i,
+    /iPhone/i,
+    /iPad/i,
+    /iPod/i,
+    /BlackBerry/i,
+    /Windows Phone/i
+  ];
+
+  return toMatch.some((toMatchItem) => {
+    return navigator.userAgent.match(toMatchItem);
+  });
+}
+
+if(detectMobile()) {
+  window.addEventListener('devicemotion', function () {
+    audio?.play();
+  }, false);
+  window.addEventListener('touchstart', function () {
+    audio?.play();
+  }, false);
+}
 
 function Fly(props: Props) {
   const { children, className, shake } = props
-  const audioRef = useRef<HTMLAudioElement>(null)
   const shouldPause = useRef<boolean>(false)
 
   const handleEnter = () => {
-    if(!!audioRef.current?.paused) {
-      audioRef.current?.play()
+    if(!!audio?.paused) {
+      audio?.play()
       shouldPause.current = false
     }
   }
@@ -26,14 +58,13 @@ function Fly(props: Props) {
     console.log('L E A V E');
     shouldPause.current = true
     delay(500).then(() => {
-      audioRef.current?.pause()
+      audio?.pause()
     })
   }
 
   return (
     <div onMouseEnter={handleEnter} onMouseLeave={handleLeave} className={classNames('ui-fly', {'ui-fly-no-shake': shake === false}, className)}>
       {children}
-      <audio src={mp3} loop ref={audioRef}/>
     </div>
   )
 }

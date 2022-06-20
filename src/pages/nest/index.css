@@ -52,10 +52,12 @@
   background-position: center center;
   background-repeat: no-repeat;
   cursor: pointer;
+  transition: all ease .3s;
 }
 
 .nest-add:hover {
-  opacity: .8;
+  opacity: .96;
+  background-size: 166px 166px;
 }
 
 .room-id {
@@ -71,6 +73,15 @@
   height: 65px;
   padding: 0 10px;
   margin-top: 8px;
+}
+
+.room-row .ui-nft {
+  transition: all ease .2s;
+  transform-origin:  center center;
+}
+
+.room-row:hover .ui-nft {
+  transform: scale(1.1);
 }
 
 .room-timer {
@@ -209,4 +220,11 @@ ui-modal .loading {
 .token-item .ui-nft img {
   width: 90px;
   height: 90px;
+}
+
+@media only screen and (max-width: 600px) {
+  .room {
+    margin-right: 0;
+    width: 100%;
+  }
 }
