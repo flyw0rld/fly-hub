@@ -41,7 +41,9 @@ function Home() {
 
   const handleClick = async () => {
     if(account) {
-      const signer = await provider.getSigner()
+      if(claimStatus === 'loading') {
+        return false
+      }
       const tx = await nft.mint()
       setClaim('loading')
       try {
@@ -59,7 +61,9 @@ function Home() {
 
   const handleAllowlistMint = async () => {
     if(account) {
-      const signer = await provider.getSigner()
+      if(claimStatus === 'loading') {
+        return false
+      }
       const tx = await nft.whitelistMint(proof, 1)
       setClaim('loading')
       try {
