@@ -24,7 +24,7 @@ function App() {
         <div className='logo' />
         <div className="header-actions">
           <NavLink className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item inactive')} to="/">HOME</NavLink>
-          <NavLink className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item inactive')} to="/nest">NEST</NavLink>
+          {/*<NavLink className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item inactive')} to="/nest">NEST</NavLink>*/}
           <Fly className="connect-button" shake={false}>
             {
               (correct || !account) && <Button size="S" onClick={account ? () => {} : connect} >
@@ -52,7 +52,7 @@ export function Main() {
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<Home />}/>
-            <Route path="nest" element={<Nest />}/>
+            {/*<Route path="nest" element={<Nest />}/>*/}
           </Route>
         </Routes>
       </HashRouter>
