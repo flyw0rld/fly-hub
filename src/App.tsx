@@ -6,7 +6,8 @@ import {
   Routes,
   Route,
   Outlet,
-  NavLink
+  NavLink,
+  Navigate
 } from "react-router-dom";
 import Home from "./pages/home";
 import Nest from "./pages/nest";
@@ -17,7 +18,7 @@ import { truncateAddress } from "./utils";
 
 function App() {
   const {account, chainId, connect, switchNetwork} = useContext(Web3Context)
-  const correct = chainId === 4
+  const correct = chainId === 1
   return (
     <div>
       <header>
@@ -53,6 +54,7 @@ export function Main() {
           <Route path="/" element={<App />}>
             <Route index element={<Home />}/>
             {/*<Route path="nest" element={<Nest />}/>*/}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>
       </HashRouter>

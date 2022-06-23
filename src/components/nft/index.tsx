@@ -12,11 +12,10 @@ interface Props {
 function NFT(props: Props) {
   const { tokenId } = props
   const { account, connect, updateContext } = useContext(Web3Context)
-
+  const url = tokenId > 2000 ? config.eggURI : `${config.baseURI}${tokenId}.png`
   return (
     <div className="ui-nft">
-      {/*<span className="ui-nft-id">#{tokenId}</span>*/}
-      <img src={`${config.baseURI}${tokenId}.png`} loading="lazy" />
+      <img src={url} loading="lazy" />
     </div>
   )
 }

@@ -97,7 +97,7 @@ function Home() {
               }
               {
                 account && <>
-                  {(status == 0 || status == 4) && <Button className="home-button" size="L" disabled={!!minted}>
+                  {status == 0 && <Button className="home-button" size="L" disabled={!!minted}>
                     NOT STARTED
                   </Button>}
                   {status == 1 && isAllowlist && <Button className="home-button" size="L" onClick={handleAllowlistMint} disabled={!!minted}>{
@@ -111,6 +111,9 @@ function Home() {
                       claimStatus === 'loading' ? 'minting...' : minted ? 'MINTED' : 'PUBLIC MINT'
                     }</Button>
                   }
+                  { status == 3 && <Button className="home-button" size="L" disabled={!!minted}>
+                    COMPLETED
+                  </Button>}
                 </>
               }
             </Fly>
