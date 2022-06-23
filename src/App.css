@@ -28,6 +28,15 @@ header {
     margin: 0 auto;
 }
 
+header .link {
+    margin-right: 20px;
+    border-bottom: 1px solid currentColor;
+}
+
+header .link:hover {
+    color: #999;
+}
+
 .logo {
   background: url(./logo.png) no-repeat center;
   background-size: contain;
@@ -48,6 +57,7 @@ header {
     line-height: 55px;
     font-weight: 500;
     text-shadow: 0 2px 5px rgba(255,255,255,.6);
+    margin-right: 10px;
 }
 
 .nav-item.active {

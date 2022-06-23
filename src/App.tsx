@@ -26,6 +26,15 @@ function App() {
         <div className="header-actions">
           <NavLink className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item inactive')} to="/">HOME</NavLink>
           {/*<NavLink className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item inactive')} to="/nest">NEST</NavLink>*/}
+          <Fly>
+            <a className="link" href="https://twitter.com/DeadFlyWorld" target="_blank">Twitter</a>
+          </Fly>
+          <Fly>
+            <a className="link" href="https://opensea.io/collection/deadflyworld" target="_blank">Opensea</a>
+          </Fly>
+          <Fly>
+            <a className="link" href="https://github.com/flyw0rld" target="_blank">Github</a>
+          </Fly>
           <Fly className="connect-button" shake={false}>
             {
               (correct || !account) && <Button size="S" onClick={account ? () => {} : connect} >
@@ -42,6 +51,9 @@ function App() {
         </div>
       </header>
       <Outlet/>
+      <footer>
+
+      </footer>
     </div>
   )
 }
